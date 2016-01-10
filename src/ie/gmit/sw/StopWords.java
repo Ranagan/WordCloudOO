@@ -9,7 +9,7 @@ public class StopWords implements Parsable
 	
 	public StopWords(String filename) throws Exception
 	{
-		//Creates a hashset of common words such as 'and' or 'the' because we
+		//Creates a set of common words such as 'and' or 'the' because we
 		//don't want these words in the word cloud
 		stopWordsSet = new HashSet<String>();
 		try

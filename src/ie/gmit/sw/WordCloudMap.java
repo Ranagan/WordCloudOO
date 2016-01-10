@@ -22,7 +22,7 @@ public class WordCloudMap {
 			//If URL
 			else
 			{
-				//parse = new UrlParser(sw);
+				parse = new URLParser(sw);
 			}
 			createMap();
 		}

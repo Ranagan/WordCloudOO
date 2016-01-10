@@ -6,21 +6,21 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class URLParser {
+public class URLParser implements Parsable {
 	
 	private URL url;
 	private Map<String, Integer> wordMap;
 	private StopWords stopWords;
 	
-	public URLParser(StopWords s)
+	public URLParser(StopWords sw)
 	{
 		wordMap = new HashMap<String, Integer>();
-		this.stopWords = s;
-		System.out.println("Main Map finished...");
+		this.stopWords = sw;
+		System.out.println("WordCloudMap finished...");
 	}
-	public void parse(String urlString) throws Exception
+	public void parseFile(String urlStr) throws Exception
 	{
-		url = new URL(urlString);
+		url = new URL(urlStr);
 		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 		StringBuffer sb = new StringBuffer();
 	    int j;
@@ -39,7 +39,7 @@ public class URLParser {
 				
 				// Checks the list of stop words
 				// If word not there, add to map
-				if (!stopWords.hasWord(word)&& word.length() > 1) 
+				if (!stopWords.hasWord(word)&& word.length() > 3) 
 				{
 					int frequency = 0;
 					if(wordMap.containsKey(word))
@@ -59,5 +59,4 @@ public class URLParser {
 	{
 		return wordMap;
 	}
-
 }

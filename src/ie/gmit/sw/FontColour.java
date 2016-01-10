@@ -28,24 +28,22 @@ public class FontColour
 	}
 	public void setSize(int size)
 	{
-		//sets the size of the font, when the input size
-		//is over a certain size the size is changed to 
-		//avoid words taking up the whole screen
+		//Bigger words are given a smaller font to fit on the image
 		if(size>72)
 		{
-			size =72;
+			size = 72;
 		}
 		if(size>120)
 		{
-			size =100;
+			size = 100;
 		}
 		if(size > 500)
 		{
-			size =200;
+			size = 200;
 		}
 		if(size>1000)
 		{
-			size =300;
+			size = 300;
 		}
 		fontSize = (int)(size);
 		
@@ -63,14 +61,14 @@ public class FontColour
 
 	private Color getRandomColor()
 	{		
-		//returns a new colour with a random RGB
+		//Randomizes the colour of the font for the word cloud
 		return new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 	}
 	
 	private String randomFont()
 	{
 		Random random = new Random();
-		//returns random font styles
+		//Random font style
 		switch(random.nextInt(3))
 		{
 		case 0:

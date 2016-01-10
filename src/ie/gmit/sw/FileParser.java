@@ -8,18 +8,19 @@ import java.util.*;
 public class FileParser implements Parsable
 {
 	private Map<String, Integer> wordMap;
-	private StopWords s;
+	private StopWords stopWords;
 	
-	public FileParser(StopWords s)
+	public FileParser(StopWords sw)
 	{
 		wordMap = new HashMap<String, Integer>();
-		this.s = s;
+		this.stopWords = sw;
 	}
 	public void parseFile(String filename) throws Exception 
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
 		StringBuffer sb = new StringBuffer();
 		
+		//Adapted from DS assignment.
 		int j;
 		// End of file while loop
 		while((j = br.read()) != -1){
@@ -36,7 +37,7 @@ public class FileParser implements Parsable
 				
 				// Checks if the word is a stop word
 				// if not, adds them to map
-				if (!s.hasWord(word)&& word.length() > 1) 
+				if (!stopWords.hasWord(word)&& word.length() > 3) 
 				{
 					int frequency = 0;
 					if(wordMap.containsKey(word))
